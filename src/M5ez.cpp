@@ -2784,6 +2784,16 @@ void ezMenu::txtSmall() { _font = ez.theme->menu_small_font; }
 
 void ezMenu::txtFont(const GFXfont* font) { _font = font; }
 
+
+bool ezMenu::updateItemName(int16_t index, String str) {
+	if (index < 0 || index > _items.size() - 1) return false;
+	_items[index].nameAndCaption = str;
+	M5ez::_redraw = true;
+//	_drawItem(index, str, _selected == index);
+	return true;
+}
+
+
 bool ezMenu::addItem(String nameAndCaption, void (*simpleFunction)() /* = NULL */, bool (*advancedFunction)(ezMenu* callingMenu) /* = NULL */, void (*drawFunction)(ezMenu* callingMenu, int16_t x, int16_t y, int16_t w, int16_t h) /* = NULL */) {
 	return addItem(NULL, nameAndCaption, simpleFunction, advancedFunction, drawFunction);
 }
