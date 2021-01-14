@@ -2935,18 +2935,24 @@ int16_t ezMenu::_runTextOnce() {
 			if (pressed != "") break;
 		}
 		if (pressed == "up") {
-			_selected--;
-			_fixOffset();
+			do {
+				_selected--;
+				_fixOffset();
+			} while (_items[_selected].nameAndCaption == "");
 		} else if (pressed == "down") {
-			_selected++;
-			_fixOffset();
+			do {
+				_selected++;
+				_fixOffset();
+			} while (_items[_selected].nameAndCaption == "");
 		} else if (pressed == "first") {
 			_selected = 0;
 			_offset = 0;
 		} else if (pressed == "last") {
-			_selected = _items.size() - 1;
-			_offset = 0;
-			_fixOffset();
+			do {
+				_selected = _items.size() - 1;
+				_offset = 0;
+				_fixOffset();
+			} while (_items[_selected].nameAndCaption == "");
 		} else if ( (ez.isBackExitOrDone(name) && !_items[_selected].advancedFunction) || ez.isBackExitOrDone(pressed) ) {
 			_pick_button = pressed;
 			_selected = -1;
