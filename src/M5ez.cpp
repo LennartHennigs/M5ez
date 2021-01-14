@@ -3106,9 +3106,15 @@ int16_t ezMenu::_runImagesOnce() {
 	}			
 }
 
-void ezMenu::setItem(int index) {
+void ezMenu::setSelected(int16_t index, bool refresh /* = false */) {
 	_selected = index;
+	if (refresh) M5ez::_redraw = true;
 }
+
+int16_t ezMenu::getSelected() {
+	return _selected;
+}
+
 
 void ezMenu::_drawImage(MenuItem_t &item) {
 	if (item.image) {

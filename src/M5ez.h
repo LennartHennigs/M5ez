@@ -337,7 +337,8 @@ class ezMenu {
 		String getTitle();
 		int16_t getItemNum(String name);
 		int16_t pick();
-		void setItem(int index);
+		void setSelected(int16_t index, bool refresh = false);
+		int16_t getSelected();
 		String pickName(), pickCaption(), pickButton();
 		void run();
 		int16_t runOnce();
