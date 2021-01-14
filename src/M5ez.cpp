@@ -3106,6 +3106,10 @@ int16_t ezMenu::_runImagesOnce() {
 	}			
 }
 
+void ezMenu::setItem(int index) {
+	_selected = index;
+}
+
 void ezMenu::_drawImage(MenuItem_t &item) {
 	if (item.image) {
 		m5.lcd.drawJpg((uint8_t *)item.image, (sizeof(item.image) / sizeof(item.image[0])), 0, ez.canvas.top() + _img_from_top, TFT_W, ez.canvas.height() - _img_from_top);
