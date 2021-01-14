@@ -2793,6 +2793,22 @@ bool ezMenu::updateItemName(int16_t index, String str) {
 	return true;
 }
 
+bool ezMenu::updateItemState(int16_t index, String str) {
+	if (index < 0 || index > _items.size() - 1) return false;
+	int pos = _items[index].nameAndCaption.lastIndexOf("\t");
+	if (pos == -1) return false;
+    String left = _items[index].nameAndCaption.substring(0, pos);
+	return updateItemName(index, left + "\t" + str);
+}
+
+String ezMenu::getItemName(int16_t index) {
+	if (index < 0 || index > _items.size() - 1) {
+		return "";
+	} else {
+		return _items[index].nameAndCaption;
+	}
+}
+
 
 bool ezMenu::addItem(String nameAndCaption, void (*simpleFunction)() /* = NULL */, bool (*advancedFunction)(ezMenu* callingMenu) /* = NULL */, void (*drawFunction)(ezMenu* callingMenu, int16_t x, int16_t y, int16_t w, int16_t h) /* = NULL */) {
 	return addItem(NULL, nameAndCaption, simpleFunction, advancedFunction, drawFunction);

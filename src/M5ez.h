@@ -324,6 +324,7 @@ class ezMenu {
 		bool addItem(const char *image, String nameAndCaption, void (*simpleFunction)() = NULL, bool (*advancedFunction)(ezMenu* callingMenu) = NULL, void (*drawFunction)(ezMenu* callingMenu, int16_t x, int16_t y, int16_t w, int16_t h) = NULL);
 		bool addItem(fs::FS &fs, String path, String nameAndCaption, void (*simpleFunction)() = NULL, bool (*advancedFunction)(ezMenu* callingMenu) = NULL, void (*drawFunction)(ezMenu* callingMenu, int16_t x, int16_t y, int16_t w, int16_t h) = NULL);
 		bool updateItemName(int16_t index, String str);
+		bool updateItemState(int16_t index, String str);
 		bool deleteItem(int16_t index);
 		bool deleteItem(String name);
 		bool setCaption(int16_t index, String caption);
@@ -336,6 +337,7 @@ class ezMenu {
 		void rightOnLast(String nameAndCaption);
 		String getTitle();
 		int16_t getItemNum(String name);
+		String getItemName(int16_t index);
 		int16_t pick();
 		void setSelected(int16_t index, bool refresh = false);
 		int16_t getSelected();
